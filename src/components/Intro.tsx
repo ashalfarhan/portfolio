@@ -24,7 +24,7 @@ const aboutTechs = [
 export function Intro({ data }: { data: Pick<Project, 'html'> }) {
   return (
     <div
-      className="bg-gray-800 min-h-screen flex flex-col items-center justify-center relative md:py-8 py-4"
+      className="dark:bg-gray-800 bg-gray-100 min-h-screen flex flex-col items-center justify-center relative md:py-8 py-4"
       id="intro"
     >
       <h1 className="uppercase font-bold md:text-3xl text-lg text-center">About Me</h1>
