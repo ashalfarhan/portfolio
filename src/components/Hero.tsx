@@ -4,7 +4,7 @@ import { Button } from '@site/components';
 import { profileData } from '@site/config';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 
-export function HeroSection() {
+export function Hero() {
   const reduce = useReducedMotion();
   const textReveal: Variants = {
     initial: { opacity: 0, y: reduce ? 0 : 25 },
