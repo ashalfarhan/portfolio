@@ -10,7 +10,6 @@ export function Hero() {
     initial: { opacity: 0, y: reduce ? 0 : 25 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
-
   const imgScaleDown: Variants = {
     initial: { opacity: 0, scale: reduce ? 1 : 1.5 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
@@ -24,7 +23,7 @@ export function Hero() {
         variants={textReveal}
         className="flex flex-col md:space-y-8 space-y-4 md:items-start items-center"
       >
-        <h1 className="md:text-6xl text-3xl font-bold leading-snug md:text-left text-center">
+        <h1 className="md:text-6xl text-2xl font-bold leading-snug md:text-left text-center">
           Hi, I am <span className="text-blue-400">{profileData.name},</span> <br /> {profileData.highlight}
         </h1>
         <div className="flex md:space-x-4 md:flex-row space-y-3 md:space-y-0 flex-col w-full">

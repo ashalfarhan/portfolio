@@ -6,3 +6,4 @@ export * from './TechStackBar';
 export * from './ProjectCard';
 export * from './Intro';
 export * from './Hero';
+export * from './Markdown';

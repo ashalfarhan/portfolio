@@ -1,5 +1,6 @@
 import { Project } from '@site/types';
 import { TechIcon } from './Icons';
+import { Markdown } from './Markdown';
 
 const aboutTechs = [
   {
@@ -26,11 +27,8 @@ export function Intro({ data }: { data: Pick<Project, 'html'> }) {
       className="bg-gray-800 min-h-screen flex flex-col items-center justify-center relative md:py-8 py-4"
       id="intro"
     >
-      <h1 className="uppercase font-bold text-3xl text-center">About Me</h1>
-      <article
-        className="prose md:prose-xl md:mx-auto my-12 mx-4 prose-lg prose-cyan text-white prose-headings:text-white prose-code:text-blue-300"
-        dangerouslySetInnerHTML={{ __html: data.html }}
-      />
+      <h1 className="uppercase font-bold md:text-3xl text-lg text-center">About Me</h1>
+      <Markdown html={data.html} className="md:mx-auto my-4 mx-4" />
       {aboutTechs.map((tech) => (
         <TechIcon key={tech.name} {...tech} size={32} />
       ))}
