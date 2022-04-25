@@ -12,8 +12,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <Seo title={project.meta.title} keywords={project.meta.technologies.map((t) => t.replace('_', ' '))} />
       <div className="container mx-auto flex flex-col items-center py-4 md:py-12 md:px-0 px-4">
         <div className="md:w-2/3 w-full mb-4">
-          <span role="button" onClick={Router.back} className="inline-flex items-center gap-x-4 mb-2 md:mb-0">
-            <BiArrowBack />
+          <span
+            role="button"
+            title="Go Back"
+            onClick={Router.back}
+            className="inline-flex items-center gap-x-4 mb-2 md:mb-0 group"
+          >
+            <BiArrowBack className="group-hover:-translate-x-4 transition-transform duration-500" />
             <span>Back</span>
           </span>
           <div className="flex flex-col md:flex-row items-center">
