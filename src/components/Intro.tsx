@@ -24,11 +24,11 @@ const aboutTechs = [
 export function Intro({ data }: { data: Pick<Project, 'html'> }) {
   return (
     <div
-      className="dark:bg-gray-800 bg-gray-100 min-h-screen flex flex-col items-center justify-center relative md:py-8 py-4"
+      className="dark:bg-gray-800 bg-gray-100 flex flex-col items-center justify-center relative py-12 scroll-mt-14"
       id="intro"
     >
-      <h1 className="uppercase font-bold md:text-3xl text-lg text-center">About Me</h1>
-      <Markdown html={data.html} className="md:mx-auto my-4 mx-4" />
+      <h1 className="font-bold md:text-3xl text-2xl text-center">About Me</h1>
+      <Markdown html={data.html} className="md:mx-auto m-4" />
       {aboutTechs.map((tech) => (
         <TechIcon key={tech.name} {...tech} size={32} />
       ))}

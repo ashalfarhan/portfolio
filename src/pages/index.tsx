@@ -6,7 +6,7 @@ import { Project } from '@site/types';
 export default function Home({ aboutData, projects }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <Seo title="Portfolio" />
+      <Seo />
       <Hero />
       <Intro data={aboutData} />
       <div className="container flex flex-col mx-auto py-4 px-2">

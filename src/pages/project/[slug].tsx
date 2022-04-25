@@ -12,7 +12,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <Seo title={project.meta.title} keywords={project.meta.technologies.map((t) => t.replace('_', ' '))} />
       <div className="container mx-auto flex flex-col items-center py-4 md:py-12 md:px-0 px-4">
         <div className="md:w-2/3 w-full mb-4">
-          <span role="button" onClick={Router.back} className="inline-flex items-center p-4 gap-x-4">
+          <span role="button" onClick={Router.back} className="inline-flex items-center gap-x-4 mb-2 md:mb-0">
             <BiArrowBack />
             <span>Back</span>
           </span>
