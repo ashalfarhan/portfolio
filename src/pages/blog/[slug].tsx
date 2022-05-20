@@ -1,11 +1,11 @@
 import {
   BlurrableImage,
+  ChevronLeft,
   Container,
   Layout,
   Markdown,
   Seo,
 } from '@site/components';
-import { IoChevronBackSharp } from 'react-icons/io5';
 import { getImgProps } from '@site/helpers';
 import { getFiles, getPost } from '@site/utils';
 import type {
@@ -35,7 +35,7 @@ export default function BlogPostPage({
                 title="Go Back"
                 className="inline-flex items-center gap-x-4 group"
               >
-                <IoChevronBackSharp className="group-hover:-translate-x-2 transition-transform duration-300" />
+                <ChevronLeft className="group-hover:-translate-x-2 transition-transform duration-300" />
                 <span>Back to blog</span>
               </a>
             </Link>

@@ -14,8 +14,3 @@ export const Markdown = ({
     />
   );
 };
-
-/*
-eslint
-  react/display-name: 0
-*/

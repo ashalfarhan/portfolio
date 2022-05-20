@@ -13,3 +13,4 @@ export * from './Typescript';
 export * from './Vue';
 export * from './ThemeIcon';
 export * from './BrandIcon';
+export * from './Accents';
