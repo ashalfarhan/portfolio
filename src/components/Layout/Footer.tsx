@@ -1,4 +1,4 @@
-import { CodepenIcon, GithubIcon, LinkedInIcon, TechIcon } from '../Icons';
+import { CodepenIcon, GithubIcon, LinkedInIcon, NextJs } from '../Icons';
 import { profileData } from '@site/config';
 
 export const Footer = () => {
@@ -34,7 +34,7 @@ export const Footer = () => {
       <div className="flex items-center justify-center flex-col text-sm">
         <div className="flex space-x-2 items-center">
           <span>&copy; {new Date().getFullYear()} - Built with</span>
-          <TechIcon name="next_js" className="dark:fill-white" />
+          <NextJs width={24} className="dark:fill-white" />
         </div>
       </div>
     </footer>

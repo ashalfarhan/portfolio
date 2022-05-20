@@ -1,5 +1,3 @@
-import { IconName } from '@site/components';
-
 export type MarkdownResult<T = Record<string, unknown>> = {
   content: string;
   readingTime: number;
@@ -15,7 +13,8 @@ export type ProjectMeta = {
   repoUrl: string;
   thumbnail: string;
   placeholder: string;
-  technologies: IconName[];
+  description?: string;
+  technologies: string[];
 };
 
 export type PostMeta = {

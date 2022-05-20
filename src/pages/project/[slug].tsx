@@ -17,7 +17,7 @@ export default function ProjectDetail({
     <Layout>
       <Seo
         title={project.meta.title}
-        keywords={project.meta.technologies.map(t => t.replace('_', ' '))}
+        keywords={project.meta.technologies}
         description={project.meta.title}
         image={project.meta.thumbnail}
       />
