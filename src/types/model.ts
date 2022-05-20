@@ -2,6 +2,7 @@ import { IconName } from '@site/components';
 
 export type MarkdownResult<T = Record<string, unknown>> = {
   content: string;
+  readingTime: number;
   meta: {
     slug: string;
     id: string;

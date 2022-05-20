@@ -7,7 +7,6 @@ import {
 } from '@site/components';
 import { IoChevronBackSharp } from 'react-icons/io5';
 import { getImgProps } from '@site/helpers';
-import { useTimeRead } from '@site/hooks';
 import { getFiles, getPost } from '@site/utils';
 import type {
   GetStaticPaths,
@@ -15,13 +14,11 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import Link from 'next/link';
-import type { Ref } from 'react';
 import { loadImageKit } from '@site/libs';
 
 export default function BlogPostPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [articleRef, minute] = useTimeRead();
   return (
     <Layout>
       <Seo
@@ -46,7 +43,8 @@ export default function BlogPostPage({
           <h1 className="font-bold text-2xl md:text-4xl">{post.meta.title}</h1>
           <hr />
           <span className="text-gray-text font-semibold">
-            {new Date(post.meta.publishedAt).toDateString()} - {minute} min read
+            {new Date(post.meta.publishedAt).toDateString()} -&nbsp;
+            {post.readingTime} min read
           </span>
           <ul className="flex gap-2">
             {post.meta.tags.map((tag, idx) => (
@@ -92,11 +90,7 @@ export default function BlogPostPage({
             }
           />
         </div>
-        <Markdown
-          ref={articleRef as Ref<HTMLDivElement>}
-          content={post.content}
-          className="mx-auto"
-        />
+        <Markdown content={post.content} className="mx-auto" />
       </Container>
     </Layout>
   );

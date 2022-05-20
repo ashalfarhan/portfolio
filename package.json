@@ -21,6 +21,7 @@
     "copy-to-clipboard": "^3.3.1",
     "framer-motion": "^6.3.3",
     "gray-matter": "^4.0.3",
+    "hast-util-reading-time": "^1.0.1",
     "highlight.js": "^11.5.1",
     "lodash.omit": "^4.5.0",
     "nanoid": "^3.3.4",
@@ -34,7 +35,12 @@
     "rehype-highlight": "^5.0.2",
     "rehype-raw": "^6.1.1",
     "rehype-slug": "^5.0.1",
-    "remark-gfm": "^3.0.1"
+    "rehype-stringify": "^9.0.3",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.6",
