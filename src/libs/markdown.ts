@@ -4,25 +4,31 @@ import { getImgProps } from '@site/helpers';
 export async function parseMarkdown(content: string) {
   // @ts-expect-error this lib doesnt built with ts
   const { default: autoHeadings } = await import('markdown-it-github-headings');
+  // @ts-expect-error this lib doesnt built with ts
+  const { default: taskLists } = await import('markdown-it-task-lists');
   const { default: markdownit } = await import('markdown-it');
   const { getHighlighter } = await import('shiki');
-  const highlighter = await getHighlighter({
+  const hl = await getHighlighter({
     theme: 'one-dark-pro',
   });
   const md = markdownit({
     html: true,
     linkify: true,
     highlight: (code, lang) => {
-      return highlighter.codeToHtml(code, {
+      return hl.codeToHtml(code, {
         lang,
       });
     },
-  }).use(autoHeadings, {
-    enableHeadingLinkIcons: true,
-    className: 'mr-1 scroll-mt-16',
-    linkIcon: '#',
-    prefix: '',
-  });
+  })
+    .use(autoHeadings, {
+      enableHeadingLinkIcons: true,
+      className: 'mr-1 scroll-mt-16',
+      linkIcon: '#',
+      prefix: '',
+    })
+    .use(taskLists, {
+      label: true,
+    });
 
   const proxy: RenderRule = (tokens, idx, options, _, self) =>
     self.renderToken(tokens, idx, options);
