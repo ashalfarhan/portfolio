@@ -10,6 +10,7 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import rehypeShiki from '@re-taro/rehype-shiki';
 import { getHighlighter } from 'shiki';
+import { h } from 'hastscript';
 
 const computedFields: ComputedFields = {
   slug: {
@@ -103,7 +104,12 @@ export default makeSource(async () => ({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      [rehypeAutoHeadings, { behavior: 'wrap' }],
+      [
+        rehypeAutoHeadings,
+        {
+          content: h('span.inline.mr-1', '#'),
+        },
+      ],
       [
         rehypeShiki,
         { highlighter: await getHighlighter({ theme: 'one-dark-pro' }) },
