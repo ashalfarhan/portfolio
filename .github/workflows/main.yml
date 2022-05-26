@@ -16,7 +16,17 @@ jobs:
         with:
           node-version: 16.13
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
+      - uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            $(yarn cache dir)
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Code analysis ⌨️
         run: |
