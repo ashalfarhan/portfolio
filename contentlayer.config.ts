@@ -11,6 +11,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeShiki from '@re-taro/rehype-shiki';
 import { getHighlighter } from 'shiki';
 import { h } from 'hastscript';
+import { buildImageKitURL } from './src/libs';
 
 const computedFields: ComputedFields = {
   slug: {
@@ -94,6 +95,49 @@ function customCodeBlock() {
   };
 }
 
+function optimizeImageKit() {
+  return async (tree: H.Root) => {
+    const { visit } = await import('unist-util-visit');
+    visit(tree, 'element', node => {
+      if (node.tagName !== 'img') return;
+      node.properties ??= {};
+      const widths = [480, 640, 864, 1100, 1260];
+      const averageSize = Math.ceil(
+        widths.reduce((prev, next) => prev + next) / widths.length,
+      );
+      const src =
+        typeof node.properties.src === 'string' ? node.properties.src : '';
+      node.properties.sizes = [
+        '(max-width: 512px) 100vw',
+        '(max-width: 864px) 70vw',
+        '60vw',
+      ];
+      node.properties.srcset = widths
+        .map(width =>
+          [
+            buildImageKitURL({
+              src,
+              width,
+              quality: 'auto',
+              format: 'auto',
+            }),
+            `${width}w`,
+          ].join(' '),
+        )
+        .join(', ');
+      node.properties.src = buildImageKitURL({
+        src,
+        width: averageSize,
+        quality: 'auto',
+        format: 'auto',
+      });
+      node.properties.className = 'rounded-md';
+      node.properties.width = averageSize;
+      node.properties.loading = 'lazy';
+    });
+  };
+}
+
 export default makeSource(async () => ({
   contentDirPath: 'content',
   documentTypes: [Post, Project, Snippet, Pages],
@@ -115,6 +159,7 @@ export default makeSource(async () => ({
         { highlighter: await getHighlighter({ theme: 'one-dark-pro' }) },
       ],
       customCodeBlock,
+      optimizeImageKit,
     ],
   },
 }));
