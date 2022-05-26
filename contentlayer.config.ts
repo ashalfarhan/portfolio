@@ -123,12 +123,12 @@ function optimizeImageKit() {
     visit(tree, 'element', node => {
       if (node.tagName !== 'img') return;
       node.properties ??= {};
+      const src =
+        typeof node.properties.src === 'string' ? node.properties.src : '';
       const widths = [480, 640, 864, 1100, 1260];
       const averageSize = Math.ceil(
         widths.reduce((prev, next) => prev + next) / widths.length,
       );
-      const src =
-        typeof node.properties.src === 'string' ? node.properties.src : '';
       node.properties.sizes = [
         '(max-width: 512px) 100vw',
         '(max-width: 864px) 70vw',
