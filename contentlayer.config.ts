@@ -3,6 +3,7 @@ import {
   makeSource,
   defineDocumentType,
   ComputedFields,
+  defineNestedType,
 } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 import rehypeAutoHeadings from 'rehype-autolink-headings';
@@ -20,6 +21,27 @@ const computedFields: ComputedFields = {
   },
 };
 
+const PostCover = defineNestedType(() => ({
+  name: 'PostCover',
+  fields: {
+    width: {
+      type: 'number',
+      required: true,
+      description: 'Width of the original cover size in px',
+    },
+    height: {
+      type: 'number',
+      required: true,
+      description: 'Height of the original cover size in px',
+    },
+    path: {
+      type: 'string',
+      required: true,
+      description: 'Path to the cover relative to the imagekit base url',
+    },
+  },
+}));
+
 const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: 'posts/*.md',
@@ -28,8 +50,8 @@ const Post = defineDocumentType(() => ({
     draft: { type: 'boolean', default: true },
     title: { type: 'string', required: true },
     description: { type: 'string', required: true },
-    publishedAt: { type: 'date', default: new Date().toISOString() },
-    cover: { type: 'json', required: true },
+    publishedAt: { type: 'date', required: true },
+    cover: { type: 'nested', of: PostCover, required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
   },
   computedFields: {
@@ -143,7 +165,6 @@ export default makeSource(async () => ({
   documentTypes: [Post, Project, Snippet, Pages],
   onMissingOrIncompatibleData: 'fail',
   onExtraFieldData: 'fail',
-
   markdown: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
