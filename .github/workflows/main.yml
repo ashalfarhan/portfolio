@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.13
-          cache: 'yarn'
+
       - name: Restore cache 🔍
         uses: actions/cache@v2
         id: cache-deps
