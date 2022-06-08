@@ -19,6 +19,8 @@ export const ThemeProvider = (props: { children: ReactNode }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    // @ts-expect-error idk why TypeScript doesn't know this attribute 🤷🏼‍♂️
+    document.documentElement.style['color-scheme'] = theme;
   }, [theme]);
 
   useEffect(() => {

@@ -6,23 +6,13 @@ export default function Document() {
       <Head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-          let preloadedTheme = localStorage.getItem("theme");
-          if (preloadedTheme == null) {
-            const isPreferDark = window.matchMedia(
-              '(prefers-color-scheme: dark)',
-            ).matches;
-            preloadedTheme = isPreferDark ? 'dark' : 'light';
-          }
-          if (preloadedTheme === "dark") {
-            document.documentElement.classList.add("dark");
-          }`,
+            __html: `let preloadedTheme=localStorage.getItem("theme");if(preloadedTheme==null){const isPreferDark=window.matchMedia('(prefers-color-scheme:dark)').matches;preloadedTheme=isPreferDark?'dark':'light';}if(preloadedTheme==="dark"){document.documentElement.classList.add("dark");}document.documentElement.style['color-scheme']=preloadedTheme;`,
           }}
         />
         <link rel="preconnect" href="https://ik.imagekit.io" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </Head>
-      <body className="bg-light-primary text-dark-primary dark:bg-dark-primary dark:text-light-primary transition-colors duration-200">
+      <body className="bg-light-primary text-dark-primary dark:bg-dark-primary dark:text-light-primary transition-colors duration-300">
         <Main />
         <NextScript />
       </body>
