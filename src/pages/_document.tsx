@@ -22,7 +22,7 @@ export default function Document() {
         <link rel="preconnect" href="https://ik.imagekit.io" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </Head>
-      <body className="bg-light-primary text-dark-primary dark:bg-dark-primary dark:text-light-primary transition-colors duration-300">
+      <body className="bg-light-primary text-dark-primary dark:bg-dark-primary dark:text-light-primary transition-colors duration-200">
         <Main />
         <NextScript />
       </body>

@@ -31,7 +31,7 @@ export const ThemeProvider = (props: { children: ReactNode }) => {
     return () => {
       darkMode.removeEventListener('change', handlePreferColorSchemeChange);
     };
-  });
+  }, []);
 
   const toggle = () => {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
