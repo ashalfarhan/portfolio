@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:e2e": "playwright test --workers=1",
+    "test:e2e": "playwright test",
     "ts:check": "tsc --noEmit",
     "fmt:write": "prettier --write \"{src,content,scripts}/**/*.{js,ts,tsx,css,md}\"",
     "fmt:check": "prettier --check \"{src,content,scripts}/**/*.{js,ts,tsx,css,md}\"",
