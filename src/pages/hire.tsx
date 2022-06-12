@@ -22,8 +22,8 @@ export default function HirePage({
           <Button
             className="flex-auto"
             as="a"
-            href="/resume.pdf"
-            download={`${profile.fullName}-Resume`}
+            href="https://drive.google.com/uc?export=download&amp;id=1yXL1xBnqTe7KpatYfUyBfivHgwyBR1We"
+            download
           >
             My Resume
           </Button>
