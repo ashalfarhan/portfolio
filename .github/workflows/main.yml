@@ -42,3 +42,39 @@ jobs:
 
       - name: Build 👷‍♀️
         run: yarn build
+
+  e2e-test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Wait Vercel Deployment ⌚️
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: vercel-deploy
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.13
+
+      - name: Restore cache 🔍
+        uses: actions/cache@v2
+        id: cache-deps
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies ⬇️
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Install playwright and browsers 💿
+        run: npx playwright install --with-deps
+
+      - name: E2E Tests 💻
+        run: yarn test:e2e
