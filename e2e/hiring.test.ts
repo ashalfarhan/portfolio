@@ -6,6 +6,6 @@ test('Hiring flow => Download Resume', async ({ page }) => {
   await expect(page).toHaveURL('/hire');
   await page.click('text=my resume');
   const download = await page.waitForEvent('download');
-  expect(download.suggestedFilename()).toMatch(/-resume\.pdf$/i);
+  expect(download.suggestedFilename()).toMatch(/resume\.pdf$/i);
   await download.delete();
 });
