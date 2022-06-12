@@ -6,7 +6,7 @@ on:
       - '**.md'
 env:
   CI: true
-  CACHE_VERSION: v1
+  PLAYWRIGHT_BROWSERS_PATH: 0
 
 jobs:
   build:
@@ -31,8 +31,6 @@ jobs:
 
       - name: Install dependencies, and browsers ⬇️
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
         run: |
           yarn install --frozen-lockfile
           npx playwright install --with-deps
@@ -77,8 +75,6 @@ jobs:
 
       - name: Install dependencies, and browsers ⬇️
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
         run: |
           yarn install --frozen-lockfile
           npx playwright install --with-deps
