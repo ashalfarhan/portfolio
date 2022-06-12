@@ -28,9 +28,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install dependencies ⬇️
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
+      - name: Install dependencies, and browsers ⬇️
+        # if: steps.cache-deps.outputs.cache-hit != 'true'
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
+        run: |
+          yarn install --frozen-lockfile
+          npx playwright install --with-deps
 
       - name: Code analysis ⌨️
         run: |
@@ -70,12 +74,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Install dependencies ⬇️
+      - name: Install dependencies, and browsers ⬇️
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
-
-      - name: Install playwright and browsers 💿
-        run: npx playwright install --with-deps
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
+        run: |
+          yarn install --frozen-lockfile
+          npx playwright install --with-deps
 
       - name: E2E Tests 💻
         run: yarn test:e2e
