@@ -1,13 +1,7 @@
 ---
-title: GitHub Actions
-description: Setup Github Actions in a JavaScript project
-icon: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg
-tags:
-  - javascript
-  - testing
-  - formatting
-  - linter
-  - continous integration
+title: How to add a simple GitHub Actions to a JavaScript project
+publishedAt: '2022-05-27'
+draft: false
 ---
 
 GitHub will run your action that located in a `.github/workflows` directory relative to the project root.

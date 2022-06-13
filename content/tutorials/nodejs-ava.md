@@ -1,15 +1,10 @@
 ---
-title: Node.js testing with ava
-description: Setup testing in a node.js project with ava
-icon: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg
-tags:
-  - nodejs
-  - testing
-  - avajs
-  - javascript
+title: How to setup Node.js testing with ava
+publishedAt: '2022-05-26'
+draft: false
 ---
 
-This snippet will explain from the project setup.
+This tutorial will explain from the project setup.
 To skip the setup you can go to [installation](#installation)
 
 ## Setup
