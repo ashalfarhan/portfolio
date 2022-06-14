@@ -108,7 +108,7 @@ export default makeSource(async () => ({
         rehypeShiki,
         { highlighter: await getHighlighter({ theme: 'one-dark-pro' }) },
       ],
-      customCodeBlock,
+      inlineCode,
       optimizeImageKit,
       externalLink,
     ],
@@ -171,7 +171,7 @@ function optimizeImageKit() {
   };
 }
 
-function customCodeBlock() {
+function inlineCode() {
   return (tree: H.Root) => {
     visit(tree, 'element', (node, _, parent) => {
       if (node.tagName !== 'code' || !parent) return;
