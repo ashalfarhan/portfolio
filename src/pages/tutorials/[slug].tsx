@@ -14,10 +14,10 @@ export default function TutorialPage({
     <Layout>
       <Seo title={tutorial.title} description={tutorial.title} />
       <Container className="max-w-prose my-12">
-        <BackButton />
-        <div className="flex mt-2 items-start">
-          <div className="flex-1">
-            <h1 className="font-bold text-3xl">{tutorial.title}</h1>
+        <div className="flex flex-col gap-4">
+          <BackButton />
+          <div>
+            <h1 className="font-bold text-3xl mb-2">{tutorial.title}</h1>
             <span className="text-neutral font-semibold">
               {dateFormatter.format(new Date(tutorial.publishedAt))}
             </span>

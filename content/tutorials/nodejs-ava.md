@@ -7,7 +7,7 @@ draft: false
 This tutorial will explain from the project setup.
 To skip the setup you can go to [installation](#installation)
 
-## Setup
+### Setup
 
 Create new node.js project
 
@@ -30,7 +30,7 @@ exports.add = (a, b) => a + b;
 
 > You can test that function with `console.log`
 
-## Installation
+### Installation
 
 Install `ava` to the project
 
@@ -51,7 +51,7 @@ Add `test` script that runs the `ava` binary
 }
 ```
 
-## Testing
+### Testing
 
 Create a test file to test the `add` function
 
@@ -71,7 +71,7 @@ Then you can run the test script
 $ npm test
 ```
 
-## Tips
+### Tips
 
 To get types/intellisense in `vscode`, modify how to import `ava`
 
@@ -80,7 +80,7 @@ To get types/intellisense in `vscode`, modify how to import `ava`
 + const { default: test } = require("ava");
 ```
 
-## References
+### References
 
 - ava Repository https://github.com/avajs/ava
 - using TypeScript https://github.com/avajs/ava/blob/main/docs/recipes/typescript.md
