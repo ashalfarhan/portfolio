@@ -7,6 +7,7 @@ on:
 env:
   CI: true
   PLAYWRIGHT_BROWSERS_PATH: 0
+  CACHE_VERSION: 1
 
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
           node-version: 16.13
 
       - name: Restore cache 🔍
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: cache-deps
         with:
           path: |
@@ -29,10 +30,13 @@ jobs:
           restore-keys: |
             yarn-${{ runner.os }}-v1-
 
+      - run: |
+          yarn cache dir
+          echo $CACHE_VERSION
+
       - name: Install dependencies ⬇️
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: |
-          yarn install --frozen-lockfile
+        if: ${{ steps.cache-deps.outputs.cache-hit != 'true' }}
+        run: yarn install --frozen-lockfile
 
       - name: Code analysis ⌨️
         run: |
