@@ -25,6 +25,8 @@ jobs:
         id: yarn-global-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
+      - run: echo "Global cache dir=${{ steps.yarn-global-cache.dir }}"
+
       - name: Restore cache 🔍
         uses: actions/cache@v3
         id: cache-deps
